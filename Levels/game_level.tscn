@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqje18ydwy47e"]
+[gd_scene load_steps=16 format=3 uid="uid://cqje18ydwy47e"]
 
-[ext_resource type="PackedScene" uid="uid://buqqnf60jceb" path="res://Characters/player_cat.tscn" id="1_w8sg4"]
+[ext_resource type="PackedScene" uid="uid://0ar1hly75tjj" path="res://Characters/player_cat.tscn" id="1_w8sg4"]
 [ext_resource type="Texture2D" uid="uid://3e8gfgc6gadc" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass tiles v.2.png" id="2_45pks"]
 [ext_resource type="Texture2D" uid="uid://t3mte7xqg6ey" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Tilled Dirt.png" id="4_t4e4j"]
 [ext_resource type="Texture2D" uid="uid://b7qrohjwv068e" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="5_0dccc"]
 [ext_resource type="Texture2D" uid="uid://x4qbe2poemo7" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="6_w6a2r"]
 [ext_resource type="Texture2D" uid="uid://d05vqn5gurlc5" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Tall Grass hill tiles v.2.png" id="7_f58o7"]
 [ext_resource type="Texture2D" uid="uid://d20pn0fixjxgt" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="7_twpo7"]
+[ext_resource type="PackedScene" uid="uid://bmqtiwmhryxan" path="res://Characters/cow.tscn" id="8_23t3x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_woxjk"]
 texture = ExtResource("2_45pks")
@@ -682,9 +683,13 @@ sources/5 = SubResource("TileSetAtlasSource_4pmbc")
 sources/6 = SubResource("TileSetAtlasSource_omtp3")
 
 [node name="GameLevel" type="Node2D"]
+y_sort_enabled = true
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_w8sg4")]
 position = Vector2(348, 161)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4qyla")
@@ -700,3 +705,9 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = -5
 layer_1/tile_data = PackedInt32Array(393234, 6, 0, 458770, 6, 1, 524306, 6, 2, 393235, 65542, 0, 458771, 65542, 1, 524307, 65542, 2, 393236, 65542, 0, 458772, 65542, 1, 524308, 65542, 2, 393237, 65542, 0, 393238, 65542, 0, 393239, 65542, 0, 393240, 65542, 0, 393241, 65542, 0, 393242, 65542, 0, 393243, 65542, 0, 393244, 65542, 0, 393245, 131078, 0, 458781, 131078, 1, 524317, 131078, 1, 589853, 131078, 1, 655389, 131078, 2, 655388, 65542, 2, 655385, 65542, 2, 655384, 6, 2, 589848, 6, 1, 524309, 65542, 2, 524310, 65542, 2, 524311, 65542, 2, 524312, 131078, 3, 655386, 196614, 2, 720922, 196614, 3, 655387, 262150, 2, 720923, 262150, 3, 458773, 65542, 1, 458774, 65542, 1, 458775, 65542, 1, 458776, 65542, 1, 458777, 65542, 1, 458778, 65542, 1, 458779, 65542, 1, 458780, 65542, 1, 524316, 65542, 1, 589852, 65542, 1, 589851, 65542, 1, 589850, 65542, 1, 589849, 65542, 1, 524313, 65542, 1, 524314, 65542, 1, 524315, 65542, 1)
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(348, 161)
+
+[node name="Cow" parent="." instance=ExtResource("8_23t3x")]
+position = Vector2(244, 150)
